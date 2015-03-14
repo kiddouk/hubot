@@ -5,7 +5,7 @@
 module.exports = (robot) ->
 
   room_topic_mapping =
-    'ElasticBeanstalkNotifications-Environment-voyr': 'sandbox'
+    'ElasticBeanstalkNotifications-Environment-voyr': 'voyr'
     
   robot.on "sns:notification", (msg) ->
     message = JSON.parse msg.message
