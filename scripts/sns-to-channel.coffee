@@ -8,5 +8,8 @@ module.exports = (robot) ->
     'ElasticBeanstalkNotifications-Environment-voyr': 'sandbox'
     
   robot.on "sns:notification", (msg) ->
-    robot.messageRoom room, "[AWS Notification] *" + msg.topic + "* - " + msg.subject + "\n" + msg.message for topic, room of room_topic_mapping when topic == msg.topic
+    explanation = "Topic: " + msg.topic + "\n"
+    explanation += "Subject: " + msg.subject + "\n"
+    explanation += "Description : " + msg.message['AlarmDescription']
+    robot.messageRoom room, "Just received an SNS Notification\n```" + explanation + "```" for topic, room of room_topic_mapping when topic == msg.topic
     
