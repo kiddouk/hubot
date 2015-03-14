@@ -8,6 +8,10 @@ module.exports = (robot) ->
     'ElasticBeanstalkNotifications-Environment-voyr': 'voyr'
     
   robot.on "sns:notification", (msg) ->
+    try
+      message = JSON.parse(msg.message)['Description']
+    catch error
+      message = msg.message
     explanation = "Topic: " + msg.topic + "\n"
     explanation += "Subject: " + msg.subject + "\n"
     explanation += "Description : " + msg.message
