@@ -13,7 +13,7 @@ module.exports = (robot) ->
     description = JSON.parse(msg.message)['AlarmDescription']
     explanation = "Topic: " + msg.topic + "\n"
     explanation += "Subject: " + msg.subject + "\n"
-    explanation += "Description : " + message
+    explanation += "Description : " + description
     robot.messageRoom room, "Just received an AWS Alarm\n```" + explanation + "```" for topic, room of room_topic_mapping when topic == msg.topic
     
   robot.on "sns:notification:ElasticBeanstalkNotifications-Environment-voyr", (msg) ->
