@@ -18,6 +18,7 @@ module.exports = (robot) ->
     
   robot.on "sns:notification:ElasticBeanstalkNotifications-Environment-voyr", (msg) ->
     result = msg.message.match(/Message:(.*)Environment:/)
+    console.log msg.message
     console.log result
     try
       message = result[1]
