@@ -5,8 +5,8 @@
 module.exports = (robot) ->
 
   room_topic_mapping =
-    'ElasticBeanstalkNotifications-Environment-voyr': 'sandbox'
-    'Alarm-voyr': 'sandbox'
+    'ElasticBeanstalkNotifications-Environment-voyr': 'voyr'
+    'Alarm-voyr': 'voyr'
 
 
   robot.on "sns:notification:Alarm-voyr", (msg) ->
@@ -19,9 +19,6 @@ module.exports = (robot) ->
   robot.on "sns:notification:ElasticBeanstalkNotifications-Environment-voyr", (msg) ->
     message = msg.message
     result = message.match(/.*Message:([\s\S]*)Environment:.*/)
-
-    console.log msg.message
-    console.log result
     try
       message = result[1]
     catch error
