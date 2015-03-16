@@ -17,14 +17,15 @@ module.exports = (robot) ->
     robot.messageRoom room, "Just received an AWS Alarm\n```" + explanation + "```" for topic, room of room_topic_mapping when topic == msg.topic
     
   robot.on "sns:notification:ElasticBeanstalkNotifications-Environment-voyr", (msg) ->
-    result = msg.message.match(/.*Message:(.*)Environment URL:.*/)
+    message = msg.message
+    result = message.match(/.*Message:([\s\S]*)Environment:.*/)
+
     console.log msg.message
     console.log result
     try
       message = result[1]
     catch error
       console.log error
-      message = msg.message
     explanation = "Topic: " + msg.topic + "\n"
     explanation += "Subject: " + msg.subject + "\n"
     explanation += "Description : " + message
