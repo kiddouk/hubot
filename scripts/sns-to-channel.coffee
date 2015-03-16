@@ -18,9 +18,11 @@ module.exports = (robot) ->
     
   robot.on "sns:notification:ElasticBeanstalkNotifications-Environment-voyr", (msg) ->
     result = msg.message.match(/Message:(.*)Environment:/)
+    console.log result
     try
       message = result[1]
     catch error
+      console.log error
       message = msg.message
     explanation = "Topic: " + msg.topic + "\n"
     explanation += "Subject: " + msg.subject + "\n"
