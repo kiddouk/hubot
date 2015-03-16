@@ -10,7 +10,8 @@ module.exports = (robot) ->
 
 
   robot.on "sns:notification:Alarm-voyr", (msg) ->
-    message = JSON.parse(msg.message)['Description']
+    #message = JSON.parse(msg.message)['Description']
+    message = msg.message
     explanation = "Topic: " + msg.topic + "\n"
     explanation += "Subject: " + msg.subject + "\n"
     explanation += "Description : " + message
