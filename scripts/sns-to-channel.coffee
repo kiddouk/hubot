@@ -30,7 +30,7 @@ module.exports = (robot) ->
     explanation = "Topic: " + msg.topic + "\n"
     explanation += "Subject: " + msg.subject + "\n"
 
-    if typeOf(message) == "object"
+    if typeof(message) == "object"
       explanation += "Description : " + message.Description + "\n"
       explanation += "Cause : " + message.Cause + "\n"
     else
