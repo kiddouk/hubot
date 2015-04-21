@@ -23,8 +23,17 @@ module.exports = (robot) ->
       message = result[1]
     catch error
       console.log error
+    try
+      message = JSON.parse(message)
+    catch error
+      console.log error
     explanation = "Topic: " + msg.topic + "\n"
     explanation += "Subject: " + msg.subject + "\n"
-    explanation += "Description : " + message
+
+    if typeOf(message) == "object":
+      explanation += "Description : " + message.Description + "\n"
+      explanation += "Cause : " + message.Cause + "\n"
+    else
+      explanation += "Message : " + message
     robot.messageRoom room, "Just received an SNS Notification\n```" + explanation + "```" for topic, room of room_topic_mapping when topic == msg.topic
     
