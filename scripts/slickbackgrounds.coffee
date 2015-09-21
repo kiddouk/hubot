@@ -14,7 +14,7 @@ AWS = require "aws-sdk"
 module.exports = (robot) ->
   errorAnswers = ["Sorry man, I failed", "Ooops, something went wrong.", "I have a bug, which prevent me to honor your request"]
   successAnswers = ["Done and done.", "Ok, done. Is that all ?", "Consider it done.", "Only this ? That was easy"]
-  robot.hear /give ([0-9]+) coins to (.*) on slickbackgrounds/, (res) ->
+  robot.respond /give ([0-9]+) coins to (.*) on slickbackgrounds/, (res) ->
     lambda = new AWS.Lambda({apiVersion: '2015-03-31'});
     lambda.invoke {
       FunctionName: "SlickBackground-Task"
@@ -29,13 +29,13 @@ module.exports = (robot) ->
         device_id: res.match[2]
         credit: res.match[1]
     }, (err, data) ->
-      if (err) res.response res.random errorAnswers
+      if (err) res.send res.random errorAnswers
       else
         if (data.StatusCode) < 299
           res.response res.random.successAnswers
           return
         if (data.Payload == "No such User")
-          res.response "Sorry, but I can't find any " + res.match[2] + " in my records."
+          res.send "Sorry, but I can't find any " + res.match[2] + " in my records."
           return
-        res.response res.random.errorAnswers
+        res.send res.random.errorAnswers
           
