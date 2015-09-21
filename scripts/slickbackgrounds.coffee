@@ -1,7 +1,10 @@
 # Description:
 #   Run the specified admin task with default + provided arguments
 #
-# Configuration
+# Commands:
+#   hubot give X coins to Y on slickbackgrounds - give X coins to Y user
+#
+# Configuration:
 #   SLICKBACKGROUNDS_DB_DB_NAME - db name
 #   SLICKBACKGROUNDS_DB_USER - user for authentication
 #   SLICKBACKGROUNDS_DB_PASSWORD - password to user in authentication
