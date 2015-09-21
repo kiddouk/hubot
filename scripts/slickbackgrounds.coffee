@@ -29,13 +29,12 @@ module.exports = (robot) ->
         device_id: res.match[2]
         credit: res.match[1]
     }, (err, data) ->
-      if (err) res.send res.random errorAnswers
+      if (err)
+        res.send res.random errorAnswers
       else
         if (data.StatusCode) < 299
-          res.response res.random.successAnswers
-          return
+          return res.response res.random.successAnswers
         if (data.Payload == "No such User")
-          res.send "Sorry, but I can't find any " + res.match[2] + " in my records."
-          return
-        res.send res.random.errorAnswers
+          return res.send "Sorry, but I can't find any " + res.match[2] + " in my records."
+        return res.send res.random.errorAnswers
           
