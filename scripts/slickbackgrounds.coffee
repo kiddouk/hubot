@@ -14,7 +14,7 @@ AWS = require "aws-sdk"
 module.exports = (robot) ->
   errorAnswers = ["Sorry man, I failed", "Ooops, something went wrong.", "I have a bug, which prevent me to honor your request"]
   successAnswers = ["Done and done.", "Ok, done. Is that all ?", "Consider it done.", "Only this ? That was easy"]
-  robot.hear /give ([0-9]+) (coins to (.*) on slickbackgrounds/, (res) ->
+  robot.hear /give ([0-9]+) coins to (.*) on slickbackgrounds/, (res) ->
     lambda = new AWS.Lambda({apiVersion: '2015-03-31'});
     lambda.invoke {
       FunctionName: "SlickBackground-Task"
