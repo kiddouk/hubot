@@ -34,10 +34,10 @@ module.exports = (robot) ->
     }, (err, data) ->
       if (err)
         console.log err
-        res.send res.random errorAnswers
+        res.send robot.random errorAnswers
       else
         if (data.StatusCode) < 299
-          return res.response res.random.successAnswers
+          return res.send res.random.successAnswers
         if (data.Payload == "No such User")
           return res.send "Sorry, but I can't find any " + res.match[2] + " in my records."
         console.log data
