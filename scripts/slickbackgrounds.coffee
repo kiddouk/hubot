@@ -21,10 +21,10 @@ module.exports = (robot) ->
     lambda = new AWS.Lambda({apiVersion: '2015-03-31'});
     payload =
       run: "setCredit"
-      db_dbname: process.env.SLICKBACKGROUND_DB_DB_NAME
-      db_host: process.env.SLICKBACKGROUND_DB_HOST
-      db_user: process.env.SLICKBACKGROUND_DB_USER
-      db_password: process.env.SLICKBACKGROUND_DB_PASSWORD
+      db_dbname: process.env.SLICKBACKGROUNDS_DB_DB_NAME
+      db_host: process.env.SLICKBACKGROUNDS_DB_HOST
+      db_user: process.env.SLICKBACKGROUNDS_DB_USER
+      db_password: process.env.SLICKBACKGROUNDS_DB_PASSWORD
       device_id: res.match[2]
       credit: res.match[1]
 
