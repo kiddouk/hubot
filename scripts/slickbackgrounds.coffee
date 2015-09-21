@@ -16,18 +16,21 @@ module.exports = (robot) ->
   successAnswers = ["Done and done.", "Ok, done. Is that all ?", "Consider it done.", "Only this ? That was easy"]
   robot.respond /give ([0-9]+) coins to (.*) on slickbackgrounds/, (res) ->
     lambda = new AWS.Lambda({apiVersion: '2015-03-31'});
+    payload =
+      run: "setCredit"
+      db_dbname: process.env.SLICKBACKGROUND_DB_DB_NAME
+      db_host: process.env.SLICKBACKGROUND_DB_HOST
+      db_user: process.env.SLICKBACKGROUND_DB_USER
+      db_password: process.env.SLICKBACKGROUND_DB_PASSWORD
+      device_id: res.match[2]
+      credit: res.match[1]
+
+
     lambda.invoke {
       FunctionName: "SlickBackground-Task"
       InvocationType: "Event"
       LogType: "None"
-      Payload:
-        run: "setCredit"
-        db_dbname: process.env.SLICKBACKGROUND_DB_DB_NAME
-        db_host: process.env.SLICKBACKGROUND_DB_HOST
-        db_user: process.env.SLICKBACKGROUND_DB_USER
-        db_password: process.env.SLICKBACKGROUND_DB_PASSWORD
-        device_id: res.match[2]
-        credit: res.match[1]
+      Payload: JSON.stringify(payload)
     }, (err, data) ->
       if (err)
         console.log err
