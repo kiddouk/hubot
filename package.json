@@ -18,7 +18,7 @@
     "hubot-slack": "^3.3.0",
     "hubot-sns": "^0.2.1",
     "hubot-youtube": "^0.1.2",
-    "git://github.com/kiddouk/hubot-gitlab.git@triggers"
+    "hubot-gitlab": "git://github.com/kiddouk/hubot-gitlab.git#triggers"
   },
   "engines": {
     "node": "0.10.x"
