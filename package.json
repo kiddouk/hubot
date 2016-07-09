@@ -1,6 +1,6 @@
 {
   "name": "hubot",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "author": "Sebastien Requiem <sebastien.requiem@gmail.com>",
   "description": "A simple helpful robot for your Company",
