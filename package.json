@@ -8,17 +8,12 @@
     "aws-sdk": "^2.2.3",
     "hubot": "^2.19.0",
     "hubot-diagnostics": "0.0.1",
-    "hubot-google-analytics": "0.0.6",
-    "hubot-google-images": "^0.1.4",
-    "hubot-googleapi": "^0.2.3",
     "hubot-help": "^0.1.1",
     "hubot-redis-brain": "0.0.2",
     "hubot-rules": "^0.1.0",
     "hubot-scripts": "^2.5.16",
     "hubot-slack": "^3.3.0",
-    "hubot-sns": "^0.2.1",
-    "hubot-youtube": "^0.1.2",
-    "hubot-gitlab": "git://github.com/kiddouk/hubot-gitlab.git#triggers"
+    "hubot-gitlab": "../hubot-gitlab"
   },
   "engines": {
     "node": "0.10.x"
